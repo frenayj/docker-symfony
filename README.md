@@ -1,6 +1,6 @@
 # Docker Symfony :whale:
 
-Basic stack of conttainers for Symfony Application development.
+Basic stack of containers for Symfony Application development.
 
 ## Installation
 
