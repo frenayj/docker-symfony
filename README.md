@@ -11,7 +11,7 @@ Basic stack of containers for Symfony Application development.
     ```
 
 
-2. Build/run containers with (with and without detached mode)
+2. Build and run containers
 
     ```bash
     docker-compose build
