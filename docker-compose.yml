@@ -1,0 +1,30 @@
+version: '2'
+services:
+    nginx:
+        build: nginx
+        ports:
+            - 80:80
+        links:
+            - php
+        volumes_from:
+            - php
+        volumes:
+            - ./logs/nginx/:/var/log/nginx
+    php:
+        build: php7-fpm
+        ports:
+            - 9000:9000
+        links:
+            - mysql:mysqldb
+        volumes:
+            - ${APP_PATH}:/var/www/current
+            - ./logs/symfony:/var/www/current/var/logs
+    mysql:
+        image: mysql
+        volumes:
+            - "./.data/mysql:/var/lib/mysql"
+        environment:
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASS}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASS}
